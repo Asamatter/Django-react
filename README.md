@@ -1,1 +1,1 @@
-# Djangoreact
+# Django-react
