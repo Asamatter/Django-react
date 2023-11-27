@@ -39,8 +39,8 @@ db.sqlite3
 Thumbs.db
 
 # Configuration files
-.eslintrc.cjs
-postcss.config.js
-tailwind.config.js
-tsconfig.node.json
-vite.config.ts
+/eslintrc.cjs
+/postcss.config.js
+/tailwind.config.js
+/tsconfig.node.json
+/vite.config.ts
