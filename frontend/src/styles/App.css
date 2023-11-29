@@ -7,6 +7,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #f8e2f6, #f0d9fa, #faecdd);
+
 }
 
 button.active {
@@ -23,47 +25,25 @@ button.active {
 }
 
 .shake {
-  animation: shake 0.5s ease-in-out;
+  animation:shake 0.9s infinite ease;
 }
+
 
 @keyframes wave {
   0%, 100% {
     clip-path: polygon(
-      0% 70%,
-      10% 65%,
-      20% 70%,
-      30% 65%,
-      40% 70%,
-      50% 65%,
-      60% 70%,
-      70% 65%,
-      80% 70%,
-      90% 65%,
-      100% 70%,
-      100% 100%,
-      0% 100%
+      0 100%, 0 70%,
+      10% 65%, 20% 70%, 30% 65%, 40% 70%, 50% 65%, 60% 70%, 70% 65%, 80% 70%, 90% 65%, 100% 70%, 100% 100%
     );
   }
 
   50% {
     clip-path: polygon(
-      0% 75%,
-      10% 80%,
-      20% 75%,
-      30% 80%,
-      40% 75%,
-      50% 80%,
-      60% 75%,
-      70% 80%,
-      80% 75%,
-      90% 80%,
-      100% 75%,
-      100% 100%,
-      0% 100%
+      0 100%, 0 70%,
+      0% 80%, 20% 75%, 30% 80%, 40% 75%, 50% 80%, 60% 75%, 70% 80%, 80% 75%, 90% 80%, 100% 75%, 100% 100%
     );
   }
 }
-
 .task-tracker {
   position: relative;
   width: 40px;

@@ -4,6 +4,7 @@ import axios from "axios";
 import Fill from "../Fill";
 import { FaTrashAlt } from "react-icons/fa";
 import daysjs from "dayjs";
+import { fetchData } from "../../services/apiService";
 
 const TodoItems: React.FC<{
   todos: ITodo[];
@@ -52,11 +53,8 @@ const TodoItems: React.FC<{
         [task.id]: !prevChecked[task.id],
       }));
     } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+      console.error("Error:", error); } };
 
-  
 
   //update
   const submitCompleted = async (
@@ -68,10 +66,7 @@ const TodoItems: React.FC<{
     try {
       const response = await axios.put(
         `http://127.0.0.1:8000/api/tasks/${todoId}/`,
-        {
-          completed: newCompletedStatus,
-        }
-      );
+        { completed: newCompletedStatus,  });
 
       const updatedTask = response.data;
       console.log("Updated Task:", updatedTask);
@@ -83,26 +78,41 @@ const TodoItems: React.FC<{
             : todo
         );
 
-        // Move the task to the top of the list
         const index = updatedTodos.findIndex((todo) => todo.id === todoId);
         updatedTodos.unshift(updatedTodos.splice(index, 1)[0]);
 
         setCompleted(updatedTodos.map((todo) => todo.completed));
-
         return updatedTodos;
-      });
+
+ });
+    } catch (error) {
+      console.error("Error:", error); } };
+
+ 
+useEffect(() => {
+  const fetchDataAndUpdateState = async () => {
+    try {
+      const data = await fetchData();
+      const completedStatus = data.map((todo: { id: number; completed: boolean }) => todo.completed);
+
+      setTodos(data);
+      setCompleted(completedStatus);
+
+      const isCheckedState = data.reduce((acc: { [key: number]: boolean }, todo: { id: number; completed: boolean }) => {
+        acc[todo.id] = todo.completed;
+        return acc;
+      }, {});
+      setIsChecked(isCheckedState);
+
+      console.log("Component mounted!");
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  useEffect(() => {
-    // Update the completed status based on the updated tasks
-    const completedStatus = todos.map((todo) => todo.completed);
-    setCompleted(completedStatus);
+  fetchDataAndUpdateState(); 
+}, [setTodos]);
 
-    console.log("Completed status:", completedStatus);
-  }, [todos]);
 
   //remove
   const handleRemoveTask = async (index: number) => {
@@ -182,31 +192,29 @@ const TodoItems: React.FC<{
 
   
     
-
-
+  const incompleteTasksCount: number = todos.filter(todo => !todo.completed).length;
+ 
   return (
     <>
       <Fill totalTasks={todos.length} />
 
 
+
 <div className="flex justify-center items-center gap-6 mb-6">
-  <button className={filterOption === "all" ? "active" : ""} onClick={() => setFilterOption("all")}>
-    Home 
-  </button>
-  <button className={filterOption === "pending" ? "active" : ""} onClick={() => setFilterOption("pending")}>
-    Pending 
-  </button>
-  <button className={filterOption === "completed" ? "active" : ""} onClick={() => setFilterOption("completed")}>
-    Completed
-  </button>
+  <button className={filterOption === "all" ? "active" : ""} onClick={() => setFilterOption("all")}>All</button>
+  <button className={filterOption === "pending" ? "active" : ""} onClick={() => setFilterOption("pending")}>Pending</button>
+  <button className={filterOption === "completed" ? "active" : ""} onClick={() => setFilterOption("completed")}>Completed</button>
+
+  <span className={`shake ${incompleteTasksCount === 0 || filterOption === "pending" ? "hidden" : "bg-red-500"} absolute top-14 right-48 rounded-full w-5 h-5`}>
+  {incompleteTasksCount > 0 && filterOption !== "pending" && incompleteTasksCount}
+</span>
+
 </div>
 
 
 
-      <div
-        className="grid grid-cols-1 gap-3 lg:w-8/12 mx-auto"
-        style={{ gridAutoFlow: "dense" }}
-      >
+      <div className="grid grid-cols-1 gap-3 lg:w-8/12 mx-auto"
+        style={{ gridAutoFlow: "dense" }}>
             {filteredTodos.map((task, index) => (
           <span
             className={
