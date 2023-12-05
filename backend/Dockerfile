@@ -23,5 +23,5 @@ RUN pip install -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
-# Specify the command to run on container start
-CMD ["python", "your_main_script.py"]
+# Run Gunicorn with 4 worker processes
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "web.wsgi:application", "-w", "4"]
