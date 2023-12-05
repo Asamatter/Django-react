@@ -137,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get("PGNAME"),
         'USER': os.environ.get("PGUSER"),
         'PASSWORD': os.environ.get("PGPASSWORD"),
