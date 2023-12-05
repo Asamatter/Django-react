@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,7 +62,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True  
 # OR
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://abject-question-production.up.railway.app','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://backend-production-7211.up.railway.app', 'https://abject-question-production.up.railway.app','https://*.127.0.0.1']
 
 
 
@@ -131,13 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get("PGNAME"),
         'USER': os.environ.get("PGUSER"),
         'PASSWORD': os.environ.get("PGPASSWORD"),
@@ -146,3 +147,4 @@ DATABASES = {
     
     }
 }
+
