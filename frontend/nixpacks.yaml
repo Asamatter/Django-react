@@ -1,0 +1,9 @@
+setup:
+  - nodejs_18
+  - npm-9_x
+install:
+  - npm ci
+build:
+  - npm run build
+start:
+  - npm vite
