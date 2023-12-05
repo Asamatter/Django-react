@@ -6,13 +6,13 @@ myenv/
 # Ignore node_modules
 node_modules/
 
-/output.css
-
 /public/
 
-.vscode/
 .idea/
 
+# Ignore collected static files
+/backend/staticfiles/
+/backend/web/settings.py
 
 # Ignore compiled Python files
 *.pyc

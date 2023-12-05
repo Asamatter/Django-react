@@ -4,7 +4,7 @@ import TodoItems from "./TodoItems";
 import { ITodo } from "../../types/types";
 import { fetchData } from "../../services/apiService";
 import Form from "../../pages/Form";
-import { Link, Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Link, Route, Routes, useNavigate, useLocation, } from "react-router-dom";
 
 const TodoListForm: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -82,7 +82,7 @@ const TodoListForm: React.FC = () => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className=" bg-sky-200 rounded-full p-1 hover:scale-125 block w-8 h-8"
+              className=" bg-sky-200 shadow-md rounded-full p-1 hover:scale-125 block w-8 h-8"
             >
               <path
                 stroke-linecap="round"
