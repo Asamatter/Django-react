@@ -24,4 +24,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Run Gunicorn with 4 worker processes
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "web.wsgi:application", "-w", "4"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

@@ -136,10 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = 'static/'
 
-PORT = int(os.environ.get("PGPORT", 8000))
-
-BIND = f"0.0.0.0:{PORT}"
-
 
 DATABASES = {
     'default': {
