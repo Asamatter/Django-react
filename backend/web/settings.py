@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import dj_database_url
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -128,6 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATIC_URL = 'static/'
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, engine='django.db.backends.postgresql')}
 
 
 DATABASES = {
