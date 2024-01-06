@@ -46,5 +46,4 @@ Thumbs.db
 
 # Configuration files
 eslintrc.cjs
-postcss.config.js
 vite.config.ts
