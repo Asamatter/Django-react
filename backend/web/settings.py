@@ -59,6 +59,8 @@ MIDDLEWARE = [
 
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://abject-question-production.up.railway.app']
+
 
 ROOT_URLCONF = 'web.urls'
 
