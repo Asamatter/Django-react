@@ -59,7 +59,11 @@ MIDDLEWARE = [
 
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://abject-question-production.up.railway.app', 'https://backend-production-7211.up.railway.app/api/tasks/']
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://abject-question-production.up.railway.app",
+]
 
 
 ROOT_URLCONF = 'web.urls'
