@@ -28,8 +28,6 @@ dist-ssr
 # Ignore node_modules
 node_modules/
 
-output.css
-
 public/
 
 .vscode/
