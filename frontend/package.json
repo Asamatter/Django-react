@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite --host 0.0.0.0 --mode=dev"
+    "start": "gunicorn web.wsgi:application --bind 0.0.0.0:$PORT"
+ 
   },
   "dependencies": {
     "axios": "^1.4.0",
