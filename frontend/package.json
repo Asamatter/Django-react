@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "npm run build && serve dist -l $PORT"
+    "start": "serve dist -l $PORT"
   },
   "dependencies": {
     "axios": "^1.4.0",
