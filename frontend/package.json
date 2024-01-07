@@ -2,7 +2,7 @@
   "name": "todolist-frontend",
   "private": true,
   "version": "0.0.0",
-  "proxy": "https://backend-production-7211.up.railway.app",
+  "proxy": "http://127.0.0.1:8000",
   "type": "module",
   "scripts": {
     "dev": "vite",
