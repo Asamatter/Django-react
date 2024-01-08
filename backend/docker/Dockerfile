@@ -14,7 +14,8 @@ RUN apt-get update && \
 
 # Create and activate the virtual environment
 RUN python -m venv venv
-RUN /bin/bash -c "source venv/bin/activate"
+RUN /bin/bash -c "source venv/bin/activate && pip install --upgrade pip"
+
 
 # Install dependencies
 RUN pip install --upgrade pip
