@@ -13,15 +13,15 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Create and activate the virtual environment
-RUN python -m venv venv
-RUN /bin/bash -c "source venv/bin/activate"
+RUN python -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
 
 # Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN . /app/venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
 COPY . .
+
 
 # Run migrations during release phase
 CMD ["python", "manage.py", "migrate"]
