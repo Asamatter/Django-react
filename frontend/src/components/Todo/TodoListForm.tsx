@@ -19,7 +19,7 @@ const TodoListForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/tasks/", {
+      const response = await axios.post("https://backend-production-7211.up.railway.app/api/tasks/", {
         title: title,
       });
       const newTask = response.data;
