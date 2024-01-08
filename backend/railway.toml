@@ -1,16 +1,7 @@
 # railway.toml
 
-name = "django-app"
-services = [
-  "django",
-]
+name = "TODO"
 
-[[services]]
-internal_port = 8000
-memory = "1Gi"
-name = "django"
-env = [
-  "DEBUG=false",
-  "ALLOWED_HOSTS=*",
-]
-startup = "python manage.py migrate && gunicorn web.wsgi"
+[services.backend]
+  start_command = "python manage.py migrate && gunicorn web.wsgi"
+  # Add other settings specific to your backend service if needed
