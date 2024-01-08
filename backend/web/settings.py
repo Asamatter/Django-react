@@ -142,7 +142,7 @@ DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, engine='dja
 
 
 DATABASES = {
-        'default': {
+        'default': {            
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get("PGNAME"),
             'USER': os.environ.get("PGUSER"),
