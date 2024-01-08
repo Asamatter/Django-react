@@ -5,7 +5,7 @@ FROM python:3.11.3
 WORKDIR /app
 
 # Copy the requirements.txt file into the container
-COPY requirements.txt .
+COPY ../requirements.txt .
 
 # Install PostgreSQL development files and other dependencies
 RUN apt-get update && \
