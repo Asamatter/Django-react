@@ -9,20 +9,24 @@ RUN apt-get update && \
     apt-get install -y libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements.txt file into the container
-COPY ./backend/ .
+# Copy the entire backend directory into the container
+COPY ../backend/ .
+
+# Set the working directory to the backend directory
+WORKDIR /app/backend
 
 # Create and activate the virtual environment
 RUN python -m venv venv
-RUN /bin/bash -c "source venv/bin/activate"
+ENV PATH="/app/backend/venv/bin:$PATH"
 
 # Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN /bin/bash -c "source venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt"
+
+# Set the working directory back to the /app directory
+WORKDIR /app
 
 # Copy the rest of the application code into the container
 COPY . .
-
 
 # Create a virtual environment and activate it
 RUN python3 -m venv /opt/venv
