@@ -65,7 +65,7 @@ const TodoItems: React.FC<{
    
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/tasks/${todoId}/`,
+        `https://backend-production-7211.up.railway.app/api/tasks/${todoId}/`,
         { completed: newCompletedStatus,  });
 
       const updatedTask = response.data;
@@ -118,7 +118,7 @@ useEffect(() => {
   const handleRemoveTask = async (index: number) => {
     try {
       const taskId = todos[index].id;
-      await axios.delete(`http://127.0.0.1:8000/api/tasks/${taskId}/`);
+      await axios.delete(`https://backend-production-7211.up.railway.app/api/tasks/${taskId}/`);
 
       console.log("Task deleted successfully");
 
@@ -144,7 +144,7 @@ useEffect(() => {
   const handleSaveEdit = async (index: number) => {
     try {
       const taskId = todos[index].id;
-      await axios.put(`http://127.0.0.1:8000/api/tasks/${taskId}/`, {
+      await axios.put(`https://backend-production-7211.up.railway.app/api/tasks/${taskId}/`, {
         title: editedTask,
       });
       console.log("Edited Task:", editedTask);
