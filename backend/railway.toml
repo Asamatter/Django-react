@@ -1,0 +1,16 @@
+# railway.toml
+
+name = "django-app"
+services = [
+  "django",
+]
+
+[[services]]
+internal_port = 8000
+memory = "1Gi"
+name = "django"
+env = [
+  "DEBUG=false",
+  "ALLOWED_HOSTS=*",
+]
+startup = "python manage.py migrate && gunicorn web.wsgi"
