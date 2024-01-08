@@ -1,6 +1,0 @@
-# railway.toml
-
-name = "backend"
-
-[services.backend]
-  start_command = "python manage.py migrate && gunicorn web.wsgi"
