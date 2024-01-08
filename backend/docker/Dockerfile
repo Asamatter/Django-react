@@ -17,7 +17,8 @@ RUN python -m venv venv
 RUN /bin/bash -c "source venv/bin/activate"
 
 # Install dependencies
-RUN . /app/venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
 COPY . .
